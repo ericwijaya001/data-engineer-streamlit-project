@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.title('ANJASSSSSSSSSSS GG KALI YGY')
-
+st.title('ERIC GANTENG KALI COI')
+st.header('AAAAAAAAAA NAISUUUUUUUUUUU')
 confirmed_global = pd.read_csv('time_series_covid19_confirmed_global.csv', index_col=None, header=0)
 confirmed_global = confirmed_global.drop(columns=['Lat', 'Long','Province/State'])
 confirmed_global = confirmed_global.groupby('Country/Region').sum().reset_index()
