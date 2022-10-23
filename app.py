@@ -22,7 +22,7 @@ Co-operation and Development (https://data.oecd.org/). Tingkat perekonomian akan
 </span>"""
 st.markdown(text1, unsafe_allow_html=True)
 
-st.header('Grafik Total Kasus COVID-19 di Seluruh Dunia')
+st.subheader('Grafik Total Kasus COVID-19 di Seluruh Dunia')
 confirmed_global = pd.read_csv('time_series_covid19_confirmed_global.csv', index_col=None, header=0)
 confirmed_global = confirmed_global.drop(columns=['Lat', 'Long','Province/State'])
 confirmed_global = confirmed_global.groupby('Country/Region').sum().reset_index()
@@ -41,8 +41,7 @@ newsdf = newsdf.drop(columns=['year', 'month'])
 fig = plt.figure() 
 plt.plot(newsdf['date'],newsdf['Total Confirmed Cases'])
 plt.xticks(rotation='vertical')
-plt.xlabel('Tanggal (per Bulan)')
-plt.ylabel('Total Kasus Terkonfirmasi (satuan 10 miliar)')
+plt.ylabel('Total Kasus Terkonfirmasi (Satuan 10 Miliar)')
 st.pyplot(fig)
 
 st.subheader('Data 10 Negara Teratas Jumlah Kasus COVID-19 Terbaru (5 Oktober 2022)')
@@ -62,9 +61,7 @@ list_top_10_confirmed_country = top_10_confirmed['Country/Region'].to_list()
 confirmed_cases_country = confirmed_global.groupby('Country/Region').sum().reset_index()
 
 ax = plt.figure(figsize=(16,6))
-plt.title('Comparison of Top 10 Confirmed Cases')
-plt.xlabel('Date Confirmed Cases (per Month)')
-plt.ylabel('Total Confirmed Cases (in Billion)')
+plt.ylabel('Total Kasus Terkonfirmasi (Satuan Miliar)')
 
 for top_10_confirmed_country in list_top_10_confirmed_country:
     country_confirmed_cases = confirmed_cases_country[confirmed_cases_country['Country/Region'] == top_10_confirmed_country].reset_index(drop=True)
@@ -88,3 +85,19 @@ for top_10_confirmed_country in list_top_10_confirmed_country:
     plt.xticks(rotation='vertical')
 plt.legend(list_top_10_confirmed_country)
 st.pyplot(ax)
+
+
+st.subheader('Grafik Total QGDP (Quaterly Gross Domestic Product)')
+qgdp_total_PC_CHGPP = pd.read_csv('DP_LIVE_23102022054035282.csv')
+top_10_confirmed_country3alphacodes = ['USA', 'IND', 'FRA', 'BRA', 'DEU', 'KOR', 'GBR', 'ITA', 'JPN', 'RUS']
+qgdp_total_PC_CHGPP[qgdp_total_PC_CHGPP['LOCATION'].isin(top_10_confirmed_country3alphacodes)]
+axx = plt.figure(figsize=(16,6))
+plt.title('Quarterly Total GDP')
+plt.ylabel('Percentage change previous period QGDP')
+
+for top_10_confirmed_country3alphacode in top_10_confirmed_country3alphacodes:
+    country_top_10_confirmed_country3alphacode = qgdp_total_PC_CHGPP[qgdp_total_PC_CHGPP['LOCATION'] == top_10_confirmed_country3alphacode]
+    plt.plot(country_top_10_confirmed_country3alphacode['TIME'],country_top_10_confirmed_country3alphacode['Value'])
+    plt.xticks(rotation='vertical')
+plt.legend(top_10_confirmed_country3alphacodes)
+st.pyplot(axx)
