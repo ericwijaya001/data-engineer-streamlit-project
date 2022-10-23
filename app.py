@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 
 st.title('Pengaruh COVID-19 Terhadap Perekonomian Negara-Negara di Dunia')
+st.markdown('#')
 st.header('AAAAAAAAAA NAISUUUUUUUUUUU')
 confirmed_global = pd.read_csv('time_series_covid19_confirmed_global.csv', index_col=None, header=0)
 confirmed_global = confirmed_global.drop(columns=['Lat', 'Long','Province/State'])
