@@ -92,8 +92,7 @@ st.subheader('Grafik Total QGDP (Quaterly Gross Domestic Product)')
 qgdp_total_PC_CHGPP = pd.read_csv('DP_LIVE_23102022054035282.csv')
 top_10_confirmed_country3alphacodes = ['USA', 'IND', 'FRA', 'BRA', 'DEU', 'KOR', 'GBR', 'ITA', 'JPN', 'RUS']
 axx = plt.figure(figsize=(16,6))
-plt.title('Quarterly Total GDP')
-plt.ylabel('Percentage change previous period QGDP')
+plt.ylabel('Perubahan persentase periode sebelumnya QGDP')
 
 for top_10_confirmed_country3alphacode in top_10_confirmed_country3alphacodes:
     country_top_10_confirmed_country3alphacode = qgdp_total_PC_CHGPP[qgdp_total_PC_CHGPP['LOCATION'] == top_10_confirmed_country3alphacode]
@@ -101,3 +100,19 @@ for top_10_confirmed_country3alphacode in top_10_confirmed_country3alphacodes:
     plt.xticks(rotation='vertical')
 plt.legend(top_10_confirmed_country3alphacodes)
 st.pyplot(axx)
+
+
+st.markdown('#')
+st.subheader('Grafik Index QGDP (Quaterly Gross Domestic Product)')
+
+qgdp_index_PC_CHGPP = pd.read_csv('DP_LIVE_23102022054016532.csv')
+
+axxx = plt.figure(figsize=(16,6))
+plt.ylabel('Index QGDP')
+
+for top_10_confirmed_country3alphacode in top_10_confirmed_country3alphacodes:
+    country_top_10_confirmed_country3alphacode = qgdp_index_PC_CHGPP[qgdp_index_PC_CHGPP['LOCATION'] == top_10_confirmed_country3alphacode]
+    plt.plot(country_top_10_confirmed_country3alphacode['TIME'],country_top_10_confirmed_country3alphacode['Value'])
+    plt.xticks(rotation='vertical')
+plt.legend(top_10_confirmed_country3alphacodes)
+st.pyplot(axxx)
