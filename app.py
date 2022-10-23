@@ -95,9 +95,9 @@ axx = plt.figure(figsize=(16,6))
 plt.title('Quarterly Total GDP')
 plt.ylabel('Percentage change previous period QGDP')
 
-# for top_10_confirmed_country3alphacode in top_10_confirmed_country3alphacodes:
-#     country_top_10_confirmed_country3alphacode = qgdp_total_PC_CHGPP[qgdp_total_PC_CHGPP['LOCATION'] == top_10_confirmed_country3alphacode]
-#     plt.plot(country_top_10_confirmed_country3alphacode['TIME'],country_top_10_confirmed_country3alphacode['Value'])
-#     plt.xticks(rotation='vertical')
-# plt.legend(top_10_confirmed_country3alphacodes)
+for top_10_confirmed_country3alphacode in top_10_confirmed_country3alphacodes:
+    country_top_10_confirmed_country3alphacode = qgdp_total_PC_CHGPP[qgdp_total_PC_CHGPP['LOCATION'] == top_10_confirmed_country3alphacode]
+    plt.plot(country_top_10_confirmed_country3alphacode['TIME'],country_top_10_confirmed_country3alphacode['Value'])
+    plt.xticks(rotation='vertical')
+plt.legend(top_10_confirmed_country3alphacodes)
 st.pyplot(axx)
