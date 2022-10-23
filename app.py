@@ -90,7 +90,7 @@ st.pyplot(ax)
 st.subheader('Grafik Total QGDP (Quaterly Gross Domestic Product)')
 qgdp_total_PC_CHGPP = pd.read_csv('DP_LIVE_23102022054035282.csv')
 top_10_confirmed_country3alphacodes = ['USA', 'IND', 'FRA', 'BRA', 'DEU', 'KOR', 'GBR', 'ITA', 'JPN', 'RUS']
-qgdp_total_PC_CHGPP[qgdp_total_PC_CHGPP['LOCATION'].isin(top_10_confirmed_country3alphacodes)]
+# qgdp_total_PC_CHGPP[qgdp_total_PC_CHGPP['LOCATION'].isin(top_10_confirmed_country3alphacodes)]
 # axx = plt.figure(figsize=(16,6))
 # plt.title('Quarterly Total GDP')
 # plt.ylabel('Percentage change previous period QGDP')
