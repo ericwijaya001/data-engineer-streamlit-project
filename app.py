@@ -116,3 +116,18 @@ for top_10_confirmed_country3alphacode in top_10_confirmed_country3alphacodes:
     plt.xticks(rotation='vertical')
 plt.legend(top_10_confirmed_country3alphacodes)
 st.pyplot(axxx)
+
+
+st.markdown('#')
+st.subheader('Inflasi CPI (Consumer Price Index )')
+cpi_total_annual_growth = pd.read_csv('DP_LIVE_23102022054442626.csv')
+
+axxxx = plt.figure(figsize=(16,6))
+plt.ylabel('Index Inflasi')
+
+for top_10_confirmed_country3alphacode in top_10_confirmed_country3alphacodes:
+    country_top_10_confirmed_country3alphacode = cpi_total_annual_growth[(cpi_total_annual_growth['LOCATION'] == top_10_confirmed_country3alphacode) & (cpi_total_annual_growth['TIME'] >= '2020-01')]
+    plt.plot(country_top_10_confirmed_country3alphacode['TIME'],country_top_10_confirmed_country3alphacode['Value'])
+    plt.xticks(rotation='vertical')
+plt.legend(top_10_confirmed_country3alphacodes)
+st.pyplot(axxxx)
