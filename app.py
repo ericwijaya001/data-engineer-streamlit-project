@@ -45,10 +45,8 @@ plt.xlabel('Tanggal (per Bulan)')
 plt.ylabel('Total Kasus Terkonfirmasi (satuan 10 miliar)')
 st.pyplot(fig)
 
-st.header('Data 10 Negara Teratas')
+st.subheader('Data 10 Negara Teratas Jumlah Kasus COVID-19 Terbaru (5 Oktober 2022)')
 st.markdown('#')
-text2 = """<span style="word-wrap:break-word;">Data 10</span>"""
-st.markdown(text2, unsafe_allow_html=True)
 
 confirmed_global['Total Confirmed'] = confirmed_global.iloc[:,-1]
 confirmed_global = confirmed_global.groupby('Country/Region').sum().reset_index()
@@ -57,3 +55,36 @@ latest_confirmed_global = confirmed_global[['Country/Region', 'Total Confirmed']
 top_10_confirmed = latest_confirmed_global.sort_values('Total Confirmed', ascending=False)[:10][['Country/Region', 'Total Confirmed']].reset_index(drop=True)
 st.dataframe(top_10_confirmed)
 
+
+st.subheader('Grafik Kenaikan Jumlah Kasus COVID-19 untuk 10 Negara Teratas')
+
+list_top_10_confirmed_country = top_10_confirmed['Country/Region'].to_list()
+confirmed_cases_country = confirmed_global.groupby('Country/Region').sum().reset_index()
+
+ax = plt.figure(figsize=(16,6))
+plt.title('Comparison of Top 10 Confirmed Cases')
+plt.xlabel('Date Confirmed Cases (per Month)')
+plt.ylabel('Total Confirmed Cases (in Billion)')
+
+for top_10_confirmed_country in list_top_10_confirmed_country:
+    country_confirmed_cases = confirmed_cases_country[confirmed_cases_country['Country/Region'] == top_10_confirmed_country].reset_index(drop=True)
+    total_country_cases = country_confirmed_cases.sum(axis=0).to_frame()
+    total_country_cases = total_country_cases.iloc[2:-1].rename(columns={0: 'Total Confirmed Cases'})
+
+    total_country_cases.index = pd.to_datetime(total_country_cases.index)
+
+    resetidx_total_country_cases = total_country_cases.reset_index()
+
+    newdf_country = resetidx_total_country_cases.groupby([resetidx_total_country_cases['index'].dt.year.rename('year'),resetidx_total_country_cases['index'].dt.month.rename('month')])['Total Confirmed Cases'].sum()
+
+    newsdf_country = newdf_country.to_frame()
+    newsdf_country = newsdf_country.reset_index()
+
+    newsdf_country['date'] = pd.to_datetime(newsdf_country[['year', 'month']].assign(DAY=1))
+    newsdf_country = newsdf_country[newsdf_country['date']<'2022-10-01']
+    newsdf_country = newsdf_country.drop(columns=['year', 'month'])
+
+    plt.plot(newsdf_country['date'],newsdf_country['Total Confirmed Cases'])
+    plt.xticks(rotation='vertical')
+plt.legend(list_top_10_confirmed_country)
+st.pyplot(ax)
