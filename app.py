@@ -94,6 +94,7 @@ Gross domestic product (GDP) is the standard measure of the value added created 
 </span>"""
 st.markdown(text2, unsafe_allow_html=True)
 
+st.markdown('#')
 st.subheader('Grafik Total QGDP (Quaterly Gross Domestic Product)')
 
 qgdp_total_PC_CHGPP = pd.read_csv('DP_LIVE_23102022054035282.csv')
@@ -132,6 +133,8 @@ Inflation measured by consumer price index (CPI) is defined as the change in the
 </span>"""
 st.markdown(text3, unsafe_allow_html=True)
 
+st.markdown('#')
+
 cpi_total_annual_growth = pd.read_csv('DP_LIVE_23102022054442626.csv')
 
 axxxx = plt.figure(figsize=(16,6))
@@ -143,3 +146,13 @@ for top_10_confirmed_country3alphacode in top_10_confirmed_country3alphacodes:
     plt.xticks(rotation='vertical')
 plt.legend(top_10_confirmed_country3alphacodes)
 st.pyplot(axxxx)
+
+
+st.markdown('#')
+st.subheader('Penutup')
+text3 = """<span style="word-wrap:break-word;">
+COVID-19 memiliki pengaruh terhadap perekonomian negara-negara di dunia. Terlihat dari Grafik Total QGDP dan Grafik Index QGDP yang mengalami penurunan signifikan pada kuartal kedua pada tahun 2020.
+Namun seiring berjalannya waktu, kesepuluh negara dengan total kasus COVID-19 terbanyak di dunia sudah mengalami 'recovery' dalam hal GDP dan cenderung mengalami kenaikan nilai yang sedikit hingga kuartal kedua tahun 2022.
+Di sisi lain, performa CPI pada masing-masing 10 negara teratas dengan kasus COVID-19 mengalami kenaikan hingga pada bulan Agustus 2022 yang berarti tingkat inflasi juga selama COVID-19 berlangsung.
+</span>"""
+st.markdown(text3, unsafe_allow_html=True)
