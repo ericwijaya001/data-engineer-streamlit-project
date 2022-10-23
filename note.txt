@@ -1,7 +1,0 @@
-https://docs.streamlit.io/library/get-started/installation
-
-https://carpentries-incubator.github.io/python-interactive-data-visualizations/08-publish-your-app/index.html
-https://github.com/harrywang/streamlit-basics
-https://towardsdev.com/build-and-deploy-streamlit-app-dca682aa6acb
-
-pip install streamlit

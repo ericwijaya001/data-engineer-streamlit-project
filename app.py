@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-st.title('ERIC GANTENG KALI COI')
+st.title('Pengaruh COVID-19 Terhadap Perekonomian Negara-Negara di Dunia')
 st.header('AAAAAAAAAA NAISUUUUUUUUUUU')
 confirmed_global = pd.read_csv('time_series_covid19_confirmed_global.csv', index_col=None, header=0)
 confirmed_global = confirmed_global.drop(columns=['Lat', 'Long','Province/State'])
@@ -22,5 +22,12 @@ newsdf = newsdf.drop(columns=['year', 'month'])
 fig = plt.figure() 
 plt.plot(newsdf['date'],newsdf['Total Confirmed Cases'])
 plt.xticks(rotation='vertical')
-
 st.pyplot(fig)
+
+
+confirmed_global['Total Confirmed'] = confirmed_global.iloc[:,-1]
+confirmed_global = confirmed_global.groupby('Country/Region').sum().reset_index()
+
+latest_confirmed_global = confirmed_global[['Country/Region', 'Total Confirmed']]
+top_10_confirmed = latest_confirmed_global.sort_values('Total Confirmed', ascending=False)[:10][['Country/Region', 'Total Confirmed']].reset_index(drop=True)
+st.dataframe(top_10_confirmed)
