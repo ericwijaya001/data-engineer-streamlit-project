@@ -47,7 +47,6 @@ st.pyplot(fig)
 st.markdown('#')
 
 st.subheader('Data 10 Negara Teratas Jumlah Kasus COVID-19 Terbaru (5 Oktober 2022)')
-st.markdown('#')
 
 confirmed_global['Total Confirmed'] = confirmed_global.iloc[:,-1]
 confirmed_global = confirmed_global.groupby('Country/Region').sum().reset_index()
@@ -88,7 +87,7 @@ for top_10_confirmed_country in list_top_10_confirmed_country:
 plt.legend(list_top_10_confirmed_country)
 st.pyplot(ax)
 
-
+st.markdown('#')
 st.subheader('Grafik Total QGDP (Quaterly Gross Domestic Product)')
 qgdp_total_PC_CHGPP = pd.read_csv('DP_LIVE_23102022054035282.csv')
 top_10_confirmed_country3alphacodes = ['USA', 'IND', 'FRA', 'BRA', 'DEU', 'KOR', 'GBR', 'ITA', 'JPN', 'RUS']
