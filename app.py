@@ -10,7 +10,7 @@ text1 = """<span style="word-wrap:break-word;">
 Sejarah Coronavirus bermula pada laporan pertama wabah COVID-19 yang berasal dari sekelompok kasus pneumonia manusia di Kota Wuhan, China, sejak akhir Desember 2019. Tanggal paling awal timbulnya kasus adalah 1 Desember 2019.
 Penyakit COVID-19 yang disebabkan oleh virus SARS-CoV-2 atau yang dikenal juga dengan coronavirus masih satu keluarga dengan coronavirus penyebab wabah Severe Acute Respiratory Syndrome (SARS) dan Middle East Respiratory Syndrome (MERS)
 </span>"""
-col1.markdown(text1, unsafe_allow_html=True)
+st.markdown(text1, unsafe_allow_html=True)
 
 # st.text(text1)
 confirmed_global = pd.read_csv('time_series_covid19_confirmed_global.csv', index_col=None, header=0)
