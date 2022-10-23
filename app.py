@@ -88,7 +88,14 @@ plt.legend(list_top_10_confirmed_country)
 st.pyplot(ax)
 
 st.markdown('#')
+st.subheader('Gross domestic product (GDP)')
+text2 = """<span style="word-wrap:break-word;">
+Gross domestic product (GDP) is the standard measure of the value added created through the production of goods and services in a country during a certain period. As such, it also measures the income earned from that production, or the total amount spent on final goods and services (less imports). While GDP is the single most important indicator to capture economic activity, it falls short of providing a suitable measure of people's material well-being for which alternative indicators may be more appropriate. This indicator is based on nominal GDP (also called GDP at current prices or GDP in value) and is available in different measures: US dollars and US dollars per capita (current PPPs). All OECD countries compile their data according to the 2008 System of National Accounts (SNA). This indicator is less suited for comparisons over time, as developments are not only caused by real growth, but also by changes in prices and PPPs.
+</span>"""
+st.markdown(text2, unsafe_allow_html=True)
+
 st.subheader('Grafik Total QGDP (Quaterly Gross Domestic Product)')
+
 qgdp_total_PC_CHGPP = pd.read_csv('DP_LIVE_23102022054035282.csv')
 top_10_confirmed_country3alphacodes = ['USA', 'IND', 'FRA', 'BRA', 'DEU', 'KOR', 'GBR', 'ITA', 'JPN', 'RUS']
 axx = plt.figure(figsize=(16,6))
@@ -120,6 +127,11 @@ st.pyplot(axxx)
 
 st.markdown('#')
 st.subheader('Inflasi CPI (Consumer Price Index )')
+text3 = """<span style="word-wrap:break-word;">
+Inflation measured by consumer price index (CPI) is defined as the change in the prices of a basket of goods and services that are typically purchased by specific groups of households. Inflation is measured in terms of the annual growth rate and in index, 2015 base year with a breakdown for food, energy and total excluding food and energy. Inflation measures the erosion of living standards. A consumer price index is estimated as a series of summary measures of the period-to-period proportional change in the prices of a fixed set of consumer goods and services of constant quantity and characteristics, acquired, used or paid for by the reference population. Each summary measure is constructed as a weighted average of a large number of elementary aggregate indices. Each of the elementary aggregate indices is estimated using a sample of prices for a defined set of goods and services obtained in, or by residents of, a specific region from a given set of outlets or other sources of consumption goods and services.
+</span>"""
+st.markdown(text3, unsafe_allow_html=True)
+
 cpi_total_annual_growth = pd.read_csv('DP_LIVE_23102022054442626.csv')
 
 axxxx = plt.figure(figsize=(16,6))
