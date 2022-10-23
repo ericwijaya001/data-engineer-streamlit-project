@@ -5,7 +5,12 @@ import matplotlib.pyplot as plt
 
 st.title('Pengaruh COVID-19 Terhadap Perekonomian Negara-Negara di Dunia')
 st.markdown('#')
-st.header('AAAAAAAAAA NAISUUUUUUUUUUU')
+st.header('COVID-19')
+text1 = """
+Sejarah Coronavirus bermula pada laporan pertama wabah COVID-19 yang berasal dari sekelompok kasus pneumonia manusia di Kota Wuhan, China, sejak akhir Desember 2019. Tanggal paling awal timbulnya kasus adalah 1 Desember 2019.
+Penyakit COVID-19 yang disebabkan oleh virus SARS-CoV-2 atau yang dikenal juga dengan coronavirus masih satu keluarga dengan coronavirus penyebab wabah Severe Acute Respiratory Syndrome (SARS) dan Middle East Respiratory Syndrome (MERS)
+"""
+st.text(text1)
 confirmed_global = pd.read_csv('time_series_covid19_confirmed_global.csv', index_col=None, header=0)
 confirmed_global = confirmed_global.drop(columns=['Lat', 'Long','Province/State'])
 confirmed_global = confirmed_global.groupby('Country/Region').sum().reset_index()
