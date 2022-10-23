@@ -21,6 +21,7 @@ Kita bersama-sama akan melihat pengaruh COVID-19 dengan menggunakan data mengena
 Co-operation and Development (https://data.oecd.org/). Tingkat perekonomian akan dilihat beberapa komponen yaitu QGDP (Quaterly Gross Domestic Product) dan Tingkat Inflasi menggunakan CPI.
 </span>"""
 st.markdown(text1, unsafe_allow_html=True)
+st.markdown('#')
 
 st.subheader('Grafik Total Kasus COVID-19 di Seluruh Dunia')
 confirmed_global = pd.read_csv('time_series_covid19_confirmed_global.csv', index_col=None, header=0)
@@ -43,6 +44,7 @@ plt.plot(newsdf['date'],newsdf['Total Confirmed Cases'])
 plt.xticks(rotation='vertical')
 plt.ylabel('Total Kasus Terkonfirmasi (Satuan 10 Miliar)')
 st.pyplot(fig)
+st.markdown('#')
 
 st.subheader('Data 10 Negara Teratas Jumlah Kasus COVID-19 Terbaru (5 Oktober 2022)')
 st.markdown('#')
@@ -54,7 +56,7 @@ latest_confirmed_global = confirmed_global[['Country/Region', 'Total Confirmed']
 top_10_confirmed = latest_confirmed_global.sort_values('Total Confirmed', ascending=False)[:10][['Country/Region', 'Total Confirmed']].reset_index(drop=True)
 st.dataframe(top_10_confirmed)
 
-
+st.markdown('#')
 st.subheader('Grafik Kenaikan Jumlah Kasus COVID-19 untuk 10 Negara Teratas')
 
 list_top_10_confirmed_country = top_10_confirmed['Country/Region'].to_list()
