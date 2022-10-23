@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
+
 st.title('Pengaruh COVID-19 Terhadap Perekonomian Negara-Negara di Dunia')
 st.header('AAAAAAAAAA NAISUUUUUUUUUUU')
 confirmed_global = pd.read_csv('time_series_covid19_confirmed_global.csv', index_col=None, header=0)
@@ -31,3 +32,10 @@ confirmed_global = confirmed_global.groupby('Country/Region').sum().reset_index(
 latest_confirmed_global = confirmed_global[['Country/Region', 'Total Confirmed']]
 top_10_confirmed = latest_confirmed_global.sort_values('Total Confirmed', ascending=False)[:10][['Country/Region', 'Total Confirmed']].reset_index(drop=True)
 st.dataframe(top_10_confirmed)
+
+import numpy as np
+with st.container():
+   st.write("This is inside the container")
+   st.bar_chart(np.random.randn(50, 3))
+
+st.write("This is outside the container")
